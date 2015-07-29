@@ -3,4 +3,11 @@
 QT += core gui widgets
 
 SOURCES += \
-    main.cpp
+    main.cpp \
+    MainWindow.cpp
+
+FORMS += \
+    MainWindow.ui
+
+HEADERS += \
+    MainWindow.h
