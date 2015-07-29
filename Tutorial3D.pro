@@ -2,6 +2,9 @@
 
 QT += core gui widgets
 
+# Qt 3D新增的
+QT += 3dcore 3drenderer 3dinput
+
 SOURCES += \
     main.cpp \
     MainWindow.cpp
