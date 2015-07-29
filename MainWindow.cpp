@@ -1,4 +1,4 @@
-#include <QAspectEngine>
+#include <QQmlAspectEngine>
 #include <QRenderAspect>
 #include <QInputAspect>
 #include <QWindow>
@@ -27,9 +27,28 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    using namespace Qt3D;
+    using namespace Qt3D::Quick;
     // 创建一个3D的视图
     // 1
     View3D* view3D = new View3D;
+
+    // 2
+    QQmlAspectEngine* engine = new QQmlAspectEngine;
+    engine->aspectEngine( )->registerAspect( new QRenderAspect );
+    engine->aspectEngine( )->registerAspect( new QInputAspect );
+
+    // 3
+    QVariantMap data;
+    data.insert( QStringLiteral( "surface" ),
+                 QVariant::fromValue( static_cast<QSurface*>( view3D ) ) );
+    data.insert( QStringLiteral( "eventSource" ),
+                 QVariant::fromValue( view3D ) );
+    engine->aspectEngine( )->setData( data );
+
+    // 4
+    engine->aspectEngine( )->initialize( );
+    engine->setSource( QUrl( "需要实现的QML资源" ) );
 
     QVBoxLayout* l = qobject_cast<QVBoxLayout*>( ui->centralwidget->layout( ) );
     l->insertWidget( 0, QWidget::createWindowContainer( view3D ) );
