@@ -16,4 +16,5 @@ HEADERS += \
     cplusplus/MainWindow.h
 
 RESOURCES += \
-    QML.qrc
+    QML.qrc \
+    Assets.qrc

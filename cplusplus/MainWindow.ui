@@ -18,7 +18,7 @@
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="showModelButton">
         <property name="text">
          <string>显示模型</string>
         </property>

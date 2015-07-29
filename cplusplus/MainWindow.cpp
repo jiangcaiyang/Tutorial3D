@@ -1,6 +1,7 @@
 #include <QQmlAspectEngine>
 #include <QRenderAspect>
 #include <QInputAspect>
+#include <QQmlContext>
 #include <QWindow>
 
 #include "MainWindow.h"
@@ -21,6 +22,19 @@ public:
     }
 };
 
+
+Settings::Settings( QObject* parent ): QObject( parent )
+{
+    m_showModel = true;
+}
+
+void Settings::setShowModel( bool showModel )
+{
+    if ( m_showModel == showModel ) return;
+    m_showModel = showModel;
+    emit showModelChanged( );
+}
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -34,7 +48,7 @@ MainWindow::MainWindow(QWidget *parent) :
     View3D* view3D = new View3D;
 
     // 2
-    QQmlAspectEngine* engine = new QQmlAspectEngine;
+    QQmlAspectEngine* engine = new QQmlAspectEngine( this );
     engine->aspectEngine( )->registerAspect( new QRenderAspect );
     engine->aspectEngine( )->registerAspect( new QInputAspect );
 
@@ -47,6 +61,9 @@ MainWindow::MainWindow(QWidget *parent) :
     engine->aspectEngine( )->setData( data );
 
     // 4
+    engine->qmlEngine( )->rootContext( )->setContextProperty( "_settings", &m_settings );
+
+    // 5
     engine->aspectEngine( )->initialize( );
     engine->setSource( QUrl( "qrc:/qml/main.qml" ) );
 
@@ -57,4 +74,12 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::on_showModelButton_clicked()
+{
+    bool show = m_settings.showModel( );
+    show = !show;
+    ui->showModelButton->setText( show? "显示模型": "隐藏模型" );
+    m_settings.setShowModel( show );
 }

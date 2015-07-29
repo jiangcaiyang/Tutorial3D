@@ -5,11 +5,42 @@ Entity
 {
     id: root
 
+    Camera
+    {
+        id: camera
+        position: Qt.vector3d( 0.0, 20.0, 100.0 )
+        projectionType: CameraLens.PerspectiveProjection
+        fieldOfView: 45
+        aspectRatio: 16.0 / 9.0
+        nearPlane : 0.1
+        farPlane : 1000.0
+        upVector: Qt.vector3d( 0.0, 1.0, 0.0 )
+        viewCenter: Qt.vector3d( 0.0, 20.0, 0.0 )
+    }
+
     components: FrameGraph
     {
         ForwardRenderer
         {
             clearColor: Qt.rgba( 0.2, 0, 0, 1 )
+            camera: camera
         }
+    }
+
+    Entity
+    {
+        Mesh
+        {
+            id: chestMesh
+            source: "qrc:/assets/Chest.obj"
+            enabled: _settings.showModel
+        }
+
+        components: [ chestMesh ]
+    }
+
+    Configuration
+    {
+        controlledCamera: camera
     }
 }

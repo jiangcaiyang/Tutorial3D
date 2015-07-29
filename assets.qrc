@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>assets/Chest.obj</file>
+        <file>assets/trefoil.obj</file>
+    </qresource>
+</RCC>
