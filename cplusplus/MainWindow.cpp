@@ -48,7 +48,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // 4
     engine->aspectEngine( )->initialize( );
-    engine->setSource( QUrl( "需要实现的QML资源" ) );
+    engine->setSource( QUrl( "qrc:/qml/main.qml" ) );
 
     QVBoxLayout* l = qobject_cast<QVBoxLayout*>( ui->centralwidget->layout( ) );
     l->insertWidget( 0, QWidget::createWindowContainer( view3D ) );

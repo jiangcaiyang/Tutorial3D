@@ -2,15 +2,18 @@
 
 QT += core gui widgets
 
-# Qt 3D新增的
+# Qt 3D新增
 QT += 3dcore 3drenderer 3dinput 3dquick
 
 SOURCES += \
-    main.cpp \
-    MainWindow.cpp
+    cplusplus/main.cpp \
+    cplusplus/MainWindow.cpp
 
 FORMS += \
-    MainWindow.ui
+    cplusplus/MainWindow.ui
 
 HEADERS += \
-    MainWindow.h
+    cplusplus/MainWindow.h
+
+RESOURCES += \
+    QML.qrc
