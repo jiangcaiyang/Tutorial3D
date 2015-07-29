@@ -27,6 +27,15 @@ Entity
         }
     }
 
+    PhongMaterial
+    {
+        id: phongMaterial
+        ambient: _settings.ambient
+        diffuse: _settings.diffuse
+        specular: _settings.specular
+        shininess: _settings.shininess
+    }
+
     Entity
     {
         Mesh
@@ -36,16 +45,30 @@ Entity
             enabled: _settings.showModel
         }
 
-        PhongMaterial
+        components: [ chestMesh, phongMaterial ]
+    }
+
+    Entity
+    {
+        Mesh
         {
-            id: phongMaterial
-            ambient: _settings.ambient
-            diffuse: _settings.diffuse
-            specular: _settings.specular
-            shininess: _settings.shininess
+            id: trefoilMesh
+            source: "qrc:/assets/trefoil.obj"
+            enabled: _settings.showModel
         }
 
-        components: [ chestMesh, phongMaterial ]
+        Transform
+        {
+            id: transform
+            Translate
+            {
+                dx: 0
+                dy: 30
+                dz: 30
+            }
+        }
+
+        components: [ trefoilMesh, phongMaterial, transform ]
     }
 
     Configuration
