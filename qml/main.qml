@@ -36,7 +36,16 @@ Entity
             enabled: _settings.showModel
         }
 
-        components: [ chestMesh ]
+        PhongMaterial
+        {
+            id: phongMaterial
+            ambient: Qt.rgba( 0.6, 0.2, 0.1, 1 )
+            diffuse: Qt.rgba( 0.2, 0.6, 0.1, 1 )
+            specular: Qt.rgba( 0.2, 0.9, 0.1, 1 )
+            shininess: 0.6
+        }
+
+        components: [ chestMesh, phongMaterial ]
     }
 
     Configuration
