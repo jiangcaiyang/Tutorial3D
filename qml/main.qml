@@ -1,5 +1,6 @@
 import Qt3D 2.0
 import Qt3D.Renderer 2.0
+import QtQuick 2.5 as Quick
 
 Entity
 {
@@ -60,11 +61,23 @@ Entity
         Transform
         {
             id: transform
+
             Translate
             {
-                dx: 0
-                dy: 30
-                dz: 30
+                translation: Qt.vector3d( 0, 30, 50 )
+            }
+
+            Rotate
+            {
+                axis: Qt.vector3d( 0, 1, 0 )
+                Quick.NumberAnimation on angle
+                {
+                    from: 0
+                    to: 360
+                    loops: Quick.Animation.Infinite
+                    duration: 2000
+                    running: true
+                }
             }
         }
 
