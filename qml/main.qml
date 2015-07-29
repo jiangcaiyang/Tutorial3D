@@ -39,10 +39,10 @@ Entity
         PhongMaterial
         {
             id: phongMaterial
-            ambient: Qt.rgba( 0.6, 0.2, 0.1, 1 )
-            diffuse: Qt.rgba( 0.2, 0.6, 0.1, 1 )
-            specular: Qt.rgba( 0.2, 0.9, 0.1, 1 )
-            shininess: 0.6
+            ambient: _settings.ambient
+            diffuse: _settings.diffuse
+            specular: _settings.specular
+            shininess: _settings.shininess
         }
 
         components: [ chestMesh, phongMaterial ]

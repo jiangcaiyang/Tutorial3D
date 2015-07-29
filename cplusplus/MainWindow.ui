@@ -20,8 +20,68 @@
       <item>
        <widget class="QPushButton" name="showModelButton">
         <property name="text">
-         <string>显示模型</string>
+         <string>隐藏模型</string>
         </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="materialButtton">
+        <property name="text">
+         <string>设置材质</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="groupBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="title">
+         <string>材质信息</string>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QPushButton" name="ambientButton">
+           <property name="text">
+            <string>环境光</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="diffuseButton">
+           <property name="text">
+            <string>漫反射</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="specularButton">
+           <property name="text">
+            <string>镜面反射</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>镜面系数</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="shininessEdit">
+           <property name="text">
+            <string>0.6</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </item>
       <item>
@@ -54,5 +114,22 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>materialButtton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>groupBox</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>129</x>
+     <y>295</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>227</x>
+     <y>325</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
